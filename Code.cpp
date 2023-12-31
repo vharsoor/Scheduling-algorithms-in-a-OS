@@ -77,8 +77,8 @@ bool compareById(Task p, Task q) {
 }
 void display(Task tasks[], int taskCount, float avgwt = 0, float avgtat = 0) {
     sort(tasks, tasks + taskCount, compareById);
-    cout << "\n\n\t\t The Task Status \n\n";
-    cout << "\tTask ID\tArrival Time\tExecution Time\tCompletion Time\tTurnaround Time\tWaiting Time";
+    cout << "\n\n\t\t The Process Status \n\n";
+    cout << "\tProcess ID\tArrival Time\tBurst Time\tCompletion Time\tTurnaround Time\tWaiting Time";
     for (int i = 0; i < taskCount; ++i)
         cout << "\n\t\t" << tasks[i].getId() << "\t\t" << tasks[i].getArrivalTime() << "\t\t" << tasks[i].getExecutionTime() << "\t\t"
              << tasks[i].getCompletionTime() << "\t\t" << tasks[i].getTurnaroundTime() << "\t\t" << tasks[i].getWaitingTime();
@@ -91,12 +91,12 @@ void getData(Task tasks[], int &taskCount) {
     int x;
     for (int i = 0; i < taskCount; i++) {
         tasks[i].setId(i + 1);
-        cout << "\n\t Task ID: ";
+        cout << "\n\t Process ID: ";
         cout << tasks[i].getId();
-        cout << "\n\t Enter the Task Arrival Time: ";
+        cout << "\n\t Enter the Process Arrival Time: ";
         cin >> x;
         tasks[i].setArrivalTime(x);
-        cout << "\n\t Enter the Task Execution Time: ";
+        cout << "\n\t Enter the Process Burst Time: ";
         cin >> x;
         tasks[i].setExecutionTime(x);
     }
@@ -106,8 +106,8 @@ void generateRandomData(Task tasks[], int taskCount) {
     srand(time(NULL));
     for (int i = 0; i < taskCount; i++) {
         tasks[i].setId(i + 1);
-        tasks[i].setArrivalTime(rand() % (16));
-        tasks[i].setExecutionTime(rand() % 20 + 2);
+        tasks[i].setArrivalTime(rand() % (15));
+        tasks[i].setExecutionTime(rand() % 18 + 2);
         tasks[i].setCompletionTime(0);
         tasks[i].setTurnaroundTime(0);
         tasks[i].setWaitingTime(0);
@@ -308,7 +308,7 @@ int main() {
         cout << "\n\t Enter your choice [1/2] : ";
         cin >> InputData;
 
-        cout << "\t No. of Tasks : ";
+        cout << "\t No. of Processes : ";
         cin >> taskCount;
 
         Task tasks[taskCount];
